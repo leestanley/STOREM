@@ -60,20 +60,17 @@ $("#submit").click(() => {
     var user = firebase.auth().currentUser;
     var file = sel.files[0];
     var ext = file.name.replace(/^.*\./, "");
-    file.name = "pic." + ext.toLowerCase();
-    var path = "users/" + user.uid + "/profilePic/";
+    var path = "users/" + user.uid + "/images/profile." + ext.toLowerCase();;
 
-    var stor = storage.ref(path);
-    stor.child(file.name).getDownloadURL().then(() => {
-      // already exists so delete then create
-      console.log("E");
-      stor.child(file.name).delete(() => {
-        stor.child(file.name).put(file);
+    var stor = storage.ref();
+    stor.child(path).getDownloadURL().then(() => {
+      // already exists for some odd reason... so delete then create
+      stor.child(path).delete(() => {
+        stor.child(path).put(file);
       });
     }, () => {
-      console.log("A");
       // file does not exist so let's get right into the creation
-      stor.child(file.name).put(file);
+      stor.child(path).put(file);
     });
 
     database.ref("/users/" + user.uid).set({
