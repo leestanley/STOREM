@@ -175,6 +175,13 @@
         document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
         // document.getElementById('address-components').innerHTML = addressComponentsOutput;
         document.getElementById('geometry').innerHTML = geometryOutput;
+         firebase.database().ref('property/' + formattedAddress).set({
+            formattedAddress: formattedAddress,
+            lat: lat,
+            lng: lng,
+          });
+
+
       })
       .catch(function(error){
         console.log(error);
@@ -184,6 +191,8 @@
     <script type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap"
     async defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   </body>
 </html>
 
