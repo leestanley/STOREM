@@ -1,0 +1,35 @@
+<html>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <meta name="google-signin-client_id" content="345363640056-4cjm25lr91k730q6vl84rs54ll1huqht.apps.googleusercontent.com">
+
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  <script>
+    function onVerified(user) {
+      var profile = user.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+
+    function onSignIn(user) {
+      $.ajax({
+        type: "POST",
+        url: "https://lahacksbackendtest2k19.appspot.com/verifyToken",
+        data: {
+          "token": user.getAuthResponse().id_token
+        },
+        dataType: "json",
+        success: function(data) {
+          if (data.success) {
+            onVerified(user);
+          } else {
+            console.log("ERROR: " + data.message);
+          }
+        }
+      });
+    }
+  </script>
+</html>
