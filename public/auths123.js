@@ -1,10 +1,9 @@
 var database = firebase.database();
+var storage = firebase.storage();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("O");
     $("#login").hide();
-    console.log("ZZZZZZZZZLOGGED IN AS " + user.displayName.toUpperCase());
     database.ref("/users/" + user.uid).once("value").then((shot) => {
       var newUser = (shot.val() == null);
       if (newUser) {
@@ -34,7 +33,7 @@ $("#login").click(() => {
 
 function validateForm() {
   var isValid = true;
-  $("#newProfile").each(function() {
+  $("#newProfile").each(() => {
     if ($(this).val() === '') {
       isValid = false;
       return false;
@@ -68,10 +67,36 @@ $("#picSel").change(() => {
   }
 });
 
-$("#submit").click(function() {
+$("#submit").click(() => {
   var sel = window.document.getElementById("picSel");
   if (validateForm() && (sel.files && sel.files[0])) {
-    
+    var user = firebase.auth().currentUser;
+    var file = sel.files[0];
+    var ext = file.name.replace(/^.*\./, "");
+    file.name = "pic." + ext.toLowerCase();
+    var path = "users/" + user.uid + "/profilePic/";
+
+    var storage = storage.ref(path);
+    storage.child(path + file.name).getDownloadURL().then(() => {
+      // already exists so delete then create
+      storage.child(path + file.name).delete(() => {
+        storage.child(path + file.name).put(file);
+      });
+    }, () => {
+      // file does not exist so let's get right into the creation
+      storage.child(path + file.name).put(file);
+    });
+
+    database.ref("/users/" + user.uid).set({
+      name: user.displayName,
+      email: user.email,
+      address: $("#paddress").val(),
+      size: $("#pft").val(),
+      phone: $("#pnum").val(),
+      profile: path,
+      uid: user.uid
+    });
+    alert("Welcome " + user.displayName + "!");
   } else {
     alert("Please fill out every item in the form!");
   }
