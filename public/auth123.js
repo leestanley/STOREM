@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#pemail").attr("value", user.email);
         $("#newProfile").show();
       } else {
-        console.log(user.displayName + " already has a profile created");
+        console.log(user.displayName + " already has a profile created.");
       }
     });
   } else {
@@ -31,25 +31,12 @@ $("#login").click(() => {
   });
 });
 
-function validateForm() {
-  var isValid = true;
-  $("#newProfile").each(() => {
-    if ($(this).val() === '') {
-      isValid = false;
-      return false;
-    }
-  });
-
-  return isValid;
-}
-
 $("#picSel").change(() => {
   var sel = window.document.getElementById("picSel");
   if (sel.files && sel.files[0]) {
-    // one selected only
     var img = new Image();
     img.onload = () => {
-      if (this.naturalWidth == 128 && this.naturalHeight == 128) {
+      if (img.naturalWidth == 128 && img.naturalHeight == 128) {
         window.URL.revokeObjectURL(img.src);
         var reader = new FileReader();
         reader.onload = function(e) {
@@ -69,22 +56,24 @@ $("#picSel").change(() => {
 
 $("#submit").click(() => {
   var sel = window.document.getElementById("picSel");
-  if (validateForm() && (sel.files && sel.files[0])) {
+  if ((sel.files && sel.files[0])) {
     var user = firebase.auth().currentUser;
     var file = sel.files[0];
     var ext = file.name.replace(/^.*\./, "");
     file.name = "pic." + ext.toLowerCase();
     var path = "users/" + user.uid + "/profilePic/";
 
-    var storage = storage.ref(path);
-    storage.child(path + file.name).getDownloadURL().then(() => {
+    var stor = storage.ref(path);
+    stor.child(file.name).getDownloadURL().then(() => {
       // already exists so delete then create
-      storage.child(path + file.name).delete(() => {
-        storage.child(path + file.name).put(file);
+      console.log("E");
+      stor.child(file.name).delete(() => {
+        stor.child(file.name).put(file);
       });
     }, () => {
+      console.log("A");
       // file does not exist so let's get right into the creation
-      storage.child(path + file.name).put(file);
+      stor.child(file.name).put(file);
     });
 
     database.ref("/users/" + user.uid).set({
