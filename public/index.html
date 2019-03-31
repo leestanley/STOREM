@@ -40,7 +40,7 @@
     <div class="left-bar background col-md-3">
       <div id="classic">
         <div class="settings-icon">
-          <img id="toggle" src="assets/images/dots.png" class="dots-icon mr-5 mt-3">
+          <input type="image" id="toggle" src="assets/images/dots.png" class="dots-icon mr-5 mt-3">
         </div>
         <img class="logo" src="assets/images/logo.png">
         <div class="btns-container">
@@ -226,6 +226,7 @@ function initMap() {
   });
   var isOpened = false;
   var openedFor = null;
+  var connectedOnce = false;
 
   var query = firebase.database().ref("users");
   query.once("value").then((snapshot) => {
@@ -284,17 +285,20 @@ function initMap() {
                     $("#tooltip_address").text(info.address);
                     $("#tooltip_pfp").attr("src", u);
 
-                    $("#tooltip_rent").click(() => {
-                      if (firebase.auth().currentUser) {
-                        if (info.available != false) {
-                          console.log("handle the rent..");
+                    if (!connectedOnce) {
+                      connectedOnce = true;
+                      $("#tooltip_rent").click(() => {
+                        if (firebase.auth().currentUser) {
+                          if (info.available != false) {
+                            console.log("handle the rent..");
+                          } else {
+                            alert("This is not available for rent! Contact the owner for questions.");
+                          }
                         } else {
-                          alert("This is not available for rent! Contact the owner for questions.");
+                          alert("Please login to Storem before attempting to rent anything.");
                         }
-                      } else {
-                        alert("Please login to Storem before attempting to rent anything.");
-                      }
-                    });
+                      });
+                    }
                   }, 500);
                 });
             });
@@ -303,7 +307,7 @@ function initMap() {
   });
 }
 </script>
-  <script src="assets/js/main55.js"></script>
+  <script src="assets/js/main556.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
 </body>
 </html>
