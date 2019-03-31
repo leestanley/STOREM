@@ -32,9 +32,17 @@ html, body {
     padding-right: 0 !important;
 }
 
+.row{
+
+}
+
 .content{
     height: 100vh;
     background-color: #00adb5;
+    padding-left: inherit !important;
+    padding-right: inherit !important;
+    margin-left: inherit !important;
+    margin-right: inherit !important;
 }
 
 .btns-container{
@@ -63,6 +71,7 @@ html, body {
 
 .sigin-btn:hover > .bottom-line{
     width: 80%;
+    transition: left 0.5s, width 0.5s;
 }
 
 .btn-lines{
@@ -74,14 +83,16 @@ html, body {
 .top-line{
     bottom: 1rem;
     width: 10%;
-    transition: width 2s;
+    transition: width 0.5s;
 }
 
 .bottom-line{
-    top: 4.3rem;
-    width: 0%;
-    left: 3.8rem;
-    transition: width 2s !important;
+    top: 4.6rem;
+    width: 10%;
+    right: 0px;
+    margin: 0px;
+    position: absolute;
+    transition: left 0.5s, width 0.5s !important;
 }
 
 .left-line{
@@ -95,7 +106,7 @@ html, body {
     height: 50px;
     width: 2px;
     position: absolute;
-    right: 0.4rem;
+    right: 0rem;
     top: 1.5rem;
 }
 
