@@ -39,10 +39,14 @@ function openProfileSettings() {
 					$("#picSel").show();
 				}
 			}
-		});
+    });
+    
 		$("#toggle").hide();
 		$("#rightBar").hide();
-		$("#btnOptions").hide();
+    $("#btnOptions").hide();
+
+    $(".logo2").css('cursor', 'pointer');
+
 		$(".left-bar").addClass("plsslide");
 		$("#profileD").show();
 	} else {
@@ -58,7 +62,8 @@ function hideProfileSettings() {
 	$("#pnum").val("");
 	$("#picSel").val("");
 	$("#previewPic").attr("src", "");
-	$("#profileD").hide();
+  $("#profileD").hide();
+  $(".logo2").css("pointer", "context-menu");
 	$(".left-bar").removeClass("plsslide");
 	$("#toggle").show();
 	$("#btnOptions").show();
@@ -72,6 +77,8 @@ function openListing() {
 	$("#toggle").hide();
 	$("#rightBar").hide();
   $("#btnOptions").hide();
+
+  $(".logo2").css('cursor', 'pointer');
   
 	$("#listPop").empty();
 	var query = database.ref("users");
@@ -109,11 +116,13 @@ function hideListing() {
 	$(".left-bar").removeClass("plsslide");
 	$("#toggle").show();
   $("#btnOptions").show();
+  $(".logo2").css("pointer", "context-menu");
 
   setTimeout(() => {
     $("#rightBar").show();
   }, 1000);
 }
+
 firebase.auth().onAuthStateChanged((user) => {
 	if (user) {
 		$("#classic").hide();
