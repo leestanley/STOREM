@@ -253,7 +253,7 @@ function initMap() {
                   $("#tooltip_size").text("");
                   $("#tooltip_address").text("");
                   $("#tooltip_pfp").attr("src", "");
-                  
+
                   if (isOpened) {
                     if (openedFor == info.uid) {
                       infoW.close();
@@ -284,9 +284,15 @@ function initMap() {
                     $("#tooltip_pfp").attr("src", u);
 
                     $("#tooltip_rent").click(() => {
-                      if (info.available) {
-                        console.log("handle the rent..");
-                      }  
+                      if (firebase.auth().currentUser) {
+                        if (info.available != false) {
+                          console.log("handle the rent..");
+                        } else {
+                          alert("This is not available for rent! Contact the owner for questions.");
+                        }
+                      } else {
+                        alert("Please login to Storem before attempting to rent anything.");
+                      }
                     });
                   }, 500);
                 });
