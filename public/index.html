@@ -59,23 +59,23 @@
         <img class="logo2" src="assets/images/hor-logo.png">
         <div class="userprofile-container row justify-content-center">
           <div class="pfp-container row justify-content-center">
-            <img src="assets/images/pfp.png" class="pfp ">
+            <img id="display" src="assets/images/pfp.png" class="pfp ">
           </div>
           <div class="text-data text-center">
-            <a class="user-name"> Morgan Freeman </a>
+            <a id="displayName" class="user-name"> Morgan Freeman </a>
             <br>
-            <a class="title-name user-name"> Renter </a>
+            <a id="role" class="title-name user-name"> Renter </a>
             <br>
           </div>
           <div class="all-logged-btns-container row justify-content-center">
             <div class="btn-edit-container">
-              <a class="btn-edit"> Edit </a>
+              <a id="edit" class="btn-edit"> Edit </a>
             </div>
             <div class="btn-edit-container listing mt-3">
-              <a class="btn-edit"> LISTING </a>
+              <a id="listing" class="btn-edit"> LISTING </a>
             </div>
             <div class="btn-edit-container logout mt-3 mb-5">
-              <a class="btn-edit"> LOGOUT </a>
+              <a id="logout" class="btn-edit"> LOGOUT </a>
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@ function initMap() {
   });
 }
 </script>
-  <script src="assets/js/main2.js"></script>
+  <script src="assets/js/main3.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
 </body>
 </html>

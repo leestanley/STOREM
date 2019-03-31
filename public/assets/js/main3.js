@@ -1,5 +1,5 @@
 class User {
-  constructor(name, email, address, long, lat, phone, uid, profile, role, size) {
+  constructor(name, email, address, long, lat, phone, uid, profile, role, size, available) {
     this.name = name;
     this.email = email;
     this.address = address;
@@ -10,6 +10,7 @@ class User {
     this.profilePath = profile;
     this.role = role;
     this.size = size;
+    this.available = available;
   }
 }
 
@@ -27,8 +28,11 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#pemail").attr("value", user.email);
         $("#newProfile").show();
       } else {
-        console.log(user.displayName + " already has a profile created.");
-        console.log("/////");
+        $("#displayName").val(user.displayName);
+        firebase.storage().ref().child(newUser.profile).getDownloadURL().then((u) => {
+          $("#display").attr("src", u);
+        });
+        $("#role").val(newUser.role == 0 ? "Hosts" : "Renter");
 
         var query = database.ref("users");
         query.once("value").then((snapshot) => {
@@ -37,7 +41,7 @@ firebase.auth().onAuthStateChanged((user) => {
             var user = new User(info.name, info.email, info.address,
                                 info.long, info.lat, info.phone,
                                 info.uid, info.profile,
-                                info.role, info.size);
+                                info.role, info.size, info.available);
             
             firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
               // load the markers
@@ -64,6 +68,10 @@ $("#login").click(() => {
     //user.uid
   });
 });
+
+$("#logout").click(() => {
+  firebase.auth().signOut().then(() => { console.log("Signed out."); });
+})
 
 $("#picSel").change(() => {
   var sel = window.document.getElementById("picSel");
