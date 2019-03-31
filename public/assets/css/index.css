@@ -341,12 +341,15 @@ button:focus {outline:0;}
     font-size: 1rem;
 }
 
-
 .pfp{
     border-radius: 50%;
     height: 150px;
     position: relative;
     top: 20rem;
+}
+
+.gm-style-iw gm-style-iw-cz {
+    background-color: transparent !important;
 }
 
 .background {
