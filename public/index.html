@@ -257,7 +257,7 @@ function initMap() {
                     $("#tooltip_pfp").attr("src", u);
 
                     $("#tooltip_rent").click(() => {
-                      if (info.available) {
+                      if (info.available != false) {
                         console.log("handle the rent..");
                       }  
                     });
