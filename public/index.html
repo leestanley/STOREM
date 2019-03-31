@@ -220,6 +220,8 @@ function initMap() {
   var infoW = new google.maps.InfoWindow({
     content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' id='tooltip_pfp' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a id='tooltip_name' class='host-name'></a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address' id='tooltip_address'></a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount' id='tooltip_size'></a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount' id='tooltip_email'></a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount' id='tooltip_phone'></a> </div> </div> <div class='rent-host justify-content-center row'> <button id='tooltip_rent' class='rent-btn'> Rent</button> </div> </div>"
   });
+  var isOpened = false;
+  var openedFor = null;
 
   var query = firebase.database().ref("users");
   query.once("value").then((snapshot) => {
@@ -242,7 +244,29 @@ function initMap() {
                 });
 
                 google.maps.event.addListener(marker, "click", () => {
-                  infoW.open(map, marker);
+                  $("#tooltip_name").text("");
+                  $("#tooltip_email").text("");
+                  $("#tooltip_phone").text("");
+                  $("#tooltip_size").text("");
+                  $("#tooltip_address").text("");
+                  $("#tooltip_pfp").attr("src", "");
+                  
+                  if (isOpened) {
+                    if (openedFor == info.uid) {
+                      infoW.close();
+                      openedFor = null;
+                      isOpened = false;
+                    } else {
+                      openedFor = info.uid;
+                      isOpened = true;
+                      infoW.open(map, marker);
+                    }
+                  } else {
+                    openedFor = info.uid;
+                    isOpened = true;
+                    infoW.open(map, marker);
+                  }
+
                   // give it time to find the elements as it opens.
                   setTimeout(() => {
                     if (info.available == false) {
