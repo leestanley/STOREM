@@ -84,34 +84,6 @@
     <!--User logged in-->
 
   <div class="right-bar col-md-9">
-  <div class="tooltip-google row">
-      <div class="pfp-n-name col-md-4">
-        <img class="pfp-tooltip" src="assets/images/pfp.png">
-        <div class="host-name-container mt-2">
-          <a class="host-name"> Mogran Freeman</a>
-        </div>
-      </div>
-      <div class="info col-md-8">
-        <div class="address">
-            <a class="host-address"> 9840 Dank Memes St. North Korea 9111</a>
-        </div>
-        <div class="storage-container">
-          <img class="storage-icon" src="assets/images/storage.png">
-          <a class="storage-amount"> 50sqft</a>
-        </div>
-        <div class="email-container">
-          <img class="storage-icon" src="assets/images/email.png">
-          <a class="storage-amount"> dank@me.me</a>
-        </div>
-        <div class="phone-container">
-          <img class="storage-icon" src="assets/images/phone.png">
-          <a class="storage-amount"> (626) 696-6969</a>
-        </div>
-      </div>
-      <div class="rent-host justify-content-center row">
-        <button class="rent-btn"> Rent</button>
-      </div>
-    </div>
     <div id="map"></div>
   </div>
 </div>
@@ -245,22 +217,30 @@ function initMap() {
       ]
   });
 
+  var infoW = new google.maps.InfoWindow({
+    content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a class='host-name'> Mogran Freeman</a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address'> 9840 Dank Memes St. North Korea 9111</a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount'> 50sqft</a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount'> dank@me.me</a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount'> (626) 696-6969</a> </div> </div> <div class='rent-host justify-content-center row'> <button id='rent' class='rent-btn'> Rent</button> </div> </div>"
+  });
+
   var query = firebase.database().ref("users");
   query.once("value").then((snapshot) => {
       snapshot.forEach((shot) => {
           var info = shot.val();
-          var user = new User(info.name, info.email, info.address,
+          /*info.name, info.email, info.address,
               info.long, info.lat, info.phone,
               info.uid, info.profile,
-              info.role, info.size, info.available);
+              info.role, info.size, info.available*/
 
-          firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
+          firebase.storage().ref().child(info.profile).getDownloadURL().then((u) => {
               var marker = new google.maps.Marker({
                   position: {
-                      lat: user.lat,
-                      lng: user.long
+                      lat: info.lat,
+                      lng: info.long
                   },
                   map: map
+              });
+
+              google.maps.event.addListener(marker, "click", () => {
+                infoW.open(map, marker);
               });
           });
       });
