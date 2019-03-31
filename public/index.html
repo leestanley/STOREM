@@ -29,20 +29,49 @@
   <body>
     <div class="row content">
       <div class="left-bar background col-md-3">
-          <img class="logo" src="assets/images/logo.png">
-        <!--<form>-->
-          <div class="btns-container">
-            <button id="login" class="sigin-btn">
-              <div class="top-line btn-lines"></div>
-              <div class="left-line btn-lines"></div>
-              <div class="right-line btn-lines"></div>
-              <div class="bottom-line btn-lines"></div>
-              <a class="desc-login"> with google.</a>
-              Login
-            </button>
-            <br>
+          <!--<form>-->
+          <div id="classic" style="display: none;">
+            <img class="logo" src="assets/images/logo.png">
+            <div class="btns-container">
+              <button id="login" class="sigin-btn">
+                <div class="top-line btn-lines"></div>
+                <div class="left-line btn-lines"></div>
+                <div class="right-line btn-lines"></div>
+                <div class="bottom-line btn-lines"></div>
+                <a class="desc-login"> with google.</a>
+                Login
+              </button>
+              <br>
+            </div>
           </div>
         <!--</form>-->
+
+        <!--User logged in-->
+        <div class="logged-in">
+          <img class="logo2" src="assets/images/hor-logo.png">
+          <div class="userprofile-container row justify-content-center">
+            <div class="pfp-container row justify-content-center">
+              <img src="assets/images/pfp.png" class="pfp ">
+            </div>
+            <div class="text-data text-center">
+              <a class="user-name"> Morgan Freeman </a>
+              <br>
+              <a class="title-name user-name"> Renter </a>
+              <br>
+            </div>
+            <div class="btn-edit-container">
+                <a class="btn-edit"> Edit </a>
+            </div>
+            <div class="btn-edit-container listing mt-5">
+                <a class="btn-edit"> LISTING </a>
+            </div>
+            <div class="btn-edit-container logout mt-5">
+                <a class="btn-edit"> LOGOUT </a>
+            </div>
+          </div>
+        </div>
+         <!--User logged in-->
+
       </div>
       <div class="right-bar col-md-9">
           <div id="map"></div>
