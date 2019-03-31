@@ -1,57 +1,244 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> STOREM | Login </title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon.png"/>
-    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/index.css"></link>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap"async defer></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
-    <script>
-      var config = {
-        apiKey: "AIzaSyDxOS4bGXOb6I4e1ZrywFWAkvGTN4LXU_4",
-        authDomain: "lahacks2019-ff0ad.firebaseapp.com",
-        databaseURL: "https://lahacks2019-ff0ad.firebaseio.com",
-        projectId: "lahacks2019-ff0ad",
-        storageBucket: "gs://lahacks2019-ff0ad.appspot.com"
-      };
 
-      firebase.initializeApp(config);
-    </script>
-  </head>
-  <body>
-    <div class="row content">
-      <div class="left-bar background col-md-3">
-          <img class="logo" src="assets/images/logo.png">
-        <!--<form>-->
-          <div class="btns-container">
-            <button id="login" class="sigin-btn">
-              <div class="top-line btn-lines"></div>
-              <div class="left-line btn-lines"></div>
-              <div class="right-line btn-lines"></div>
-              <div class="bottom-line btn-lines"></div>
-              <a class="desc-login"> with google.</a>
-              Login
-            </button>
+<head>
+  <title> STOREM </title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/png" href="assets/images/icon.png" />
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  </link>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDxOS4bGXOb6I4e1ZrywFWAkvGTN4LXU_4",
+      authDomain: "lahacks2019-ff0ad.firebaseapp.com",
+      databaseURL: "https://lahacks2019-ff0ad.firebaseio.com",
+      projectId: "lahacks2019-ff0ad",
+      storageBucket: "gs://lahacks2019-ff0ad.appspot.com"
+    };
+
+    firebase.initializeApp(config);
+  </script>
+</head>
+
+<body>
+  <div class="row content">
+    <div class="left-bar background col-md-3">
+      <div id="classic">
+        <img class="logo" src="assets/images/logo.png">
+        <div class="btns-container">
+          <button id="login" class="sigin-btn">
+            <div class="top-line btn-lines"></div>
+            <div class="left-line btn-lines"></div>
+            <div class="right-line btn-lines"></div>
+            <div class="bottom-line btn-lines"></div>
+            <a class="desc-login"> with google.</a>
+            Login
+          </button>
+          <br>
+        </div>
+      </div>
+    <!--</form>-->
+
+    <!--User logged in-->
+      <div id="actual" class="logged-in" style="display: none;">
+        <img class="logo2" src="assets/images/hor-logo.png">
+        <div class="userprofile-container row justify-content-center">
+          <div class="pfp-container row justify-content-center">
+            <img src="assets/images/pfp.png" class="pfp ">
+          </div>
+          <div class="text-data text-center">
+            <a class="user-name"> Morgan Freeman </a>
+            <br>
+            <a class="title-name user-name"> Renter </a>
             <br>
           </div>
-        <!--</form>-->
-      </div>
-      <div class="right-bar col-md-9">
-          <iframe width="100%" height="99%" src="https://google.org/crisismap/us-wildfires?hl=en&llbox=50.53%2C21.89%2C-59.07%2C-124.99&t=TERRAIN&layers=5%2C2%2C16%2C17%2C9&embedded=true" style="border: 1px solid #ccc"></iframe>
+          <div class="all-logged-btns-container row justify-content-center">
+            <div class="btn-edit-container">
+              <a class="btn-edit"> Edit </a>
+            </div>
+            <div class="btn-edit-container listing mt-3">
+              <a class="btn-edit"> LISTING </a>
+            </div>
+            <div class="btn-edit-container logout mt-3 mb-5">
+              <a class="btn-edit"> LOGOUT </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <!--User logged in-->
 
-    <script src="assets/js/initmap.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+  <div class="right-bar col-md-9">
+      <iframe width="100%" height="99%" src="https://google.org/crisismap/us-wildfires?hl=en&llbox=50.53%2C21.89%2C-59.07%2C-124.99&t=TERRAIN&layers=5%2C2%2C16%2C17%2C9&embedded=true" style="border: 1px solid #ccc"></iframe>  </div>
+</div>
+
+<script>
+function initMap() {
+  // Styles a map in night mode.
+  var map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: 34.0689,
+        lng: -118.4452
+      },
+      zoom: 14,
+      styles: [{
+              elementType: 'geometry',
+              stylers: [{
+                  color: '#242f3e'
+              }]
+          },
+          {
+              elementType: 'labels.text.stroke',
+              stylers: [{
+                  color: '#242f3e'
+              }]
+          },
+          {
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#746855'
+              }]
+          },
+          {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#d59563'
+              }]
+          },
+          {
+              featureType: 'poi.attraction',
+              elementType: 'all',
+              stylers: [{
+                  visibility: "off"
+              }]
+          },
+          {
+              featureType: 'poi.business',
+              elementType: 'all',
+              stylers: [{
+                  visibility: "off"
+              }]
+          },
+          {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{
+                  color: '#263c3f'
+              }]
+          },
+          {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#6b9a76'
+              }]
+          },
+          {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{
+                  color: '#38414e'
+              }]
+          },
+          {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{
+                  color: '#212a37'
+              }]
+          },
+          {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#9ca5b3'
+              }]
+          },
+          {
+              featureType: 'road.highway',
+              elementType: 'all',
+              stylers: [{
+                  visibility: "off"
+              }]
+          },
+
+          {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{
+                  color: '#2f3948'
+              }]
+          },
+          {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#d59563'
+              }]
+          },
+          {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{
+                  color: '#17263c'
+              }]
+          },
+          {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{
+                  color: '#515c6d'
+              }]
+          },
+          {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{
+                  color: '#17263c'
+              }]
+          }
+      ]
+  });
+
+  var query = firebase.database().ref("users");
+  query.once("value").then((snapshot) => {
+      snapshot.forEach((shot) => {
+          var info = shot.val();
+          var user = new User(info.name, info.email, info.address,
+              info.long, info.lat, info.phone,
+              info.uid, info.profile,
+              info.role, info.size, info.available);
+
+          firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
+              var marker = new google.maps.Marker({
+                  position: {
+                      lat: user.lat,
+                      lng: user.long
+                  },
+                  map: map
+              });
+          });
+      });
+  });
+}
+</script>
+  <script src="assets/js/main2.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
+</body>
 </html>
-
-<!-- <iframe width="400" height="400" src="https://google.org/crisismap/us-wildfires?hl=en&llbox=50.53%2C21.89%2C-59.07%2C-124.99&t=TERRAIN&layers=5%2C2%2C16%2C17%2C9&embedded=true" style="border: 1px solid #ccc"></iframe> -->
