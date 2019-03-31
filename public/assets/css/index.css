@@ -194,7 +194,7 @@ button:focus {outline:0;}
 .signup-containers{
     position: absolute;
     left: 50%;
-    top: 86%;
+    top: 56%;
     transform: translate(-50%, -50%);
 }
 
@@ -240,17 +240,19 @@ button:focus {outline:0;}
     position: absolute;
     padding: 12px;
     background-color: #222831 !important;
-    -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
-    clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
     border-radius:10%;
 }
 
 .rent-host{
     width: 140%;
     position: relative;
-    top: 1rem;
-    height: 5.5rem;
+    top: 2.3rem;
+    height: 6.6rem;
     background-color: transparent !important;
+}
+
+.address-line{
+    color: white !important;
 }
 
 .rent-btn{
@@ -425,7 +427,7 @@ th h1{
     font-weight: 300;
     line-height: 1.42em;
     color:#A7A1AE;
-    top: 35rem !important;
+    top: 20rem !important;
     position: relative !important;
 }
 
