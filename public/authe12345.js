@@ -61,7 +61,7 @@ $("#newProfile").validate({
       var user = firebase.auth().currentUser;
       var file = sel.files[0];
       var ext = file.name.replace(/^.*\./, "");
-      var path = "users/" + user.uid + "/images/profile." + ext.toLowerCase();;
+      var path = "users/" + user.uid + "/images/profile." + ext.toLowerCase();
 
       var stor = storage.ref();
       stor.child(path).getDownloadURL().then(() => {
