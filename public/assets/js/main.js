@@ -279,7 +279,7 @@ $("#toggle").click(() => {
 $("#editProfileBtn").click(openProfileSettings);
 $("#showListings").click(openListing);
 
-$("#logo2").click(() => {
+$(".logo2").click(() => {
   if ($("#profileD").is(":visible")) {
     hideProfileSettings();
   } else if ($("#listingD").is(":visible")) {
