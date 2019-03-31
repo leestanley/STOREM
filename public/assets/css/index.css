@@ -187,6 +187,115 @@ button:focus {outline:0;}
     width: 25rem;
     max-height: 20rem;
     margin-top: -0.5rem;
+    background-color: #222831 !important;
+}
+
+.tooltip-google{
+    z-index: 5;
+    width: 25rem;
+    max-width: 25rem;
+    height: 18rem;
+    max-height: 18rem;
+    position: absolute;
+    padding: 12px;
+    background-color: #222831 !important;
+    -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
+    border-radius:10%;
+}
+
+.rent-host{
+    width: 140%;
+    position: relative;
+    top: 1rem;
+    height: 5.5rem;
+    background-color: transparent !important;
+}
+
+.rent-btn{
+    color: white !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    width: 100%;
+    border: none !important;
+    background-color: #00adb5 !important;
+}
+
+.rent-btn:hover{
+    background-color: #018f96 !important;
+}
+
+.host-name{
+    color: white !important;
+    font-weight: 400;
+    font-size: 1.1rem;
+    position: relative;
+    left: 5px;
+    word-wrap: normal;
+    text-transform: capitalize;
+    z-index: 2;
+}
+
+.tooltip-google{
+    height: 100% !important;
+}
+
+.host-name-container{
+    height: 100%;
+    text-align: center;
+}
+
+.pfp-n-name{
+    display: inline !important;
+}
+
+.info{
+    display: inline !important;
+}
+
+.storage-amount{
+    color:white !important;
+    font-weight: bold;
+}
+
+.storage-icon{
+    width: 2.5rem;
+}
+
+.host-address{
+    text-transform: capitalize;
+    font-weight: bold;
+    width: 100%;
+}
+
+.address{
+    width: 110%;
+}
+
+.pfp-tooltip{
+    width: 110%;
+    border-radius: 30%;
+}
+
+.title{
+    color: white !important;
+}
+
+.address{
+    color: white !important;
+}
+
+.gm-ui-hover-effect{
+    display: none !important;
+}
+
+.gm-style-iw-d{
+    overflow: hidden !important;
+}
+
+.poi-info-window div{
+    background-color: inherit !important;
 }
 
 .view-link{

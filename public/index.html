@@ -59,23 +59,23 @@
         <img class="logo2" src="assets/images/hor-logo.png">
         <div class="userprofile-container row justify-content-center">
           <div class="pfp-container row justify-content-center">
-            <img id="display" src="assets/images/pfp.png" class="pfp ">
+            <img src="assets/images/pfp.png" class="pfp ">
           </div>
           <div class="text-data text-center">
-            <a id="displayName" class="user-name"></a>
+            <a class="user-name"> Morgan Freeman </a>
             <br>
-            <a id="role" class="title-name user-name"></a>
+            <a class="title-name user-name"> Renter </a>
             <br>
           </div>
           <div class="all-logged-btns-container row justify-content-center">
             <div class="btn-edit-container">
-              <a id="edit" class="btn-edit"> Edit </a>
+              <a class="btn-edit"> Edit </a>
             </div>
             <div class="btn-edit-container listing mt-3">
-              <a id="listing" class="btn-edit"> LISTING </a>
+              <a class="btn-edit"> LISTING </a>
             </div>
             <div class="btn-edit-container logout mt-3 mb-5">
-              <a id="logout" class="btn-edit"> LOGOUT </a>
+              <a class="btn-edit"> LOGOUT </a>
             </div>
           </div>
         </div>
@@ -84,6 +84,34 @@
     <!--User logged in-->
 
   <div class="right-bar col-md-9">
+  <div class="tooltip-google row">
+      <div class="pfp-n-name col-md-4">
+        <img class="pfp-tooltip" src="assets/images/pfp.png">
+        <div class="host-name-container mt-2">
+          <a class="host-name"> Mogran Freeman</a>
+        </div>
+      </div>
+      <div class="info col-md-8">
+        <div class="address">
+            <a class="host-address"> 9840 Dank Memes St. North Korea 9111</a>
+        </div>
+        <div class="storage-container">
+          <img class="storage-icon" src="assets/images/storage.png">
+          <a class="storage-amount"> 50sqft</a>
+        </div>
+        <div class="email-container">
+          <img class="storage-icon" src="assets/images/email.png">
+          <a class="storage-amount"> dank@me.me</a>
+        </div>
+        <div class="phone-container">
+          <img class="storage-icon" src="assets/images/phone.png">
+          <a class="storage-amount"> (626) 696-6969</a>
+        </div>
+      </div>
+      <div class="rent-host justify-content-center row">
+        <button class="rent-btn"> Rent</button>
+      </div>
+    </div>
     <div id="map"></div>
   </div>
 </div>
@@ -239,7 +267,7 @@ function initMap() {
   });
 }
 </script>
-  <script src="assets/js/main55.js"></script>
+  <script src="assets/js/main2.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
 </body>
 </html>
