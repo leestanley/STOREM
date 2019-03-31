@@ -286,4 +286,6 @@ $("#toggle").click(() => {
 
 $("#editProfileBtn").click(openProfileSettings);
 $("#showListings").click(openListing);
+
 $("#backListing").click(hideListing);
+$("#backProfile").click(hideProfileSettings);
