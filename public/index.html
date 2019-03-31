@@ -43,6 +43,53 @@
           <input type="image" id="toggle" src="assets/images/dots.png" class="dots-icon mr-5 mt-3">
         </div>
         <img class="logo" src="assets/images/logo.png">
+        <form class="signup-containers justify-content-center" style="display: none;">
+            <div class="name-input">
+              <label> Name </label> <br>
+              <input class="text-input" type="text" id="pname" readonly name="form[name]">
+            </div> <br>
+            <div class="email-input">
+              <label> Email </label> <br>
+              <input class="text-input" type="email" id="pemail" readonly name="form[email]">
+            </div><br>
+            <div class="adress-input">
+              <label> Address </label><br>
+              <input class="text-input" type="text" id="paddress" name="form[address]" required>
+            </div><br>
+            <div class="stroage-input">
+              <label> Square Foot of Storage </label> <br>
+              <input class="text-input" type="number" id="pft" name="form[sqft]" required>
+            </div> <br>
+            <div class="phone-input">
+              <label> Phone Number </label> <br>
+              <input class="text-input" type="text" id="pnum" name="form[phone]" required>
+            </div> <br>
+            <div class="pfp-input">
+              <label> Profile Picture </label> <br>
+              <img class="text-stuff" id="previewPic" src="" alt="Preview Profile Picture"> <br>
+              <input class="text-stuff" type="file" required accept="image/*" multiple="false" id="picSel" width="128" height="128" name="form[file]">
+            </div><br>
+            <div class="role-input">
+              <label class="text-stuff"> House Owner / Renter? </label> <br>
+              <input class="text-stuff" type="radio" name="role" value="0" checked>
+              <a class="text-stuff"> House Owner </a>
+              <input class="text-stuff" type="radio" name="role" value="1"> 
+              <a class="text-stuff"> Renter </a>
+            </div>
+            <div class="ava-input">
+              <label> Availability </label> <br>
+              <input type="checkbox" id="avail" name="availability" value="0">
+              <a class="text-stuff"> Yes </a>
+            </div>
+            <br>
+            <!-- <input class="mb-5"type="submit" value="Register"> -->
+            <div class="all-logged-btns-container row justify-content-center reg-btn mb-5">
+                <div class="btn-edit-container">
+                  <a id="editProfile"  class="mb-5" type="sumbit" class="btn-edit" value="Register"> Register </a>
+                </div>
+              </div>
+            </div>
+          </form>
         <div class="btns-container">
           <button id="login" class="sigin-btn">
             <div class="top-line btn-lines"></div>

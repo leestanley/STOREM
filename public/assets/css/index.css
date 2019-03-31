@@ -6,6 +6,13 @@ html, body {
     padding-right: 0 !important;
 }
 
+textarea, input { outline: none; }
+
+label{
+    color: white !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
 button:focus {outline:0;}
 
@@ -138,6 +145,10 @@ button:focus {outline:0;}
     top: 1.5rem;
 }
 
+.reg-btn{
+    top: 1rem !important;
+}
+
 .desc-login{
     position: absolute;
     color: white !important;
@@ -162,9 +173,29 @@ button:focus {outline:0;}
     font-size: 1.5rem;
 }
 
+.text-stuff{
+    color: white !important;
+}
+
 .dots-icon{
     width: 2rem;
     float: right;
+}
+
+.text-input{
+    width: 30rem;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    border-width: 0;
+    height: 2rem !important;
+    box-shadow:inset 0 0 5px 1px #888 !important;
+}
+
+.signup-containers{
+    position: absolute;
+    left: 50%;
+    top: 86%;
+    transform: translate(-50%, -50%);
 }
 
 .btn-edit-container{
