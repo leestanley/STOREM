@@ -369,6 +369,6 @@ button:focus {outline:0;}
         display: none;
     }
     .logo2{
-        max-width: 20rem;
+        max-width: 80%;
     }
 }
