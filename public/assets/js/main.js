@@ -63,7 +63,7 @@ function hideProfileSettings() {
 	$("#picSel").val("");
 	$("#previewPic").attr("src", "");
   $("#profileD").hide();
-  $(".logo2").css("pointer", "context-menu");
+  $(".logo2").css("pointer", "");
 	$(".left-bar").removeClass("plsslide");
 	$("#toggle").show();
 	$("#btnOptions").show();
@@ -116,7 +116,7 @@ function hideListing() {
 	$(".left-bar").removeClass("plsslide");
 	$("#toggle").show();
   $("#btnOptions").show();
-  $(".logo2").css("pointer", "context-menu");
+  $(".logo2").css("pointer", "");
 
   setTimeout(() => {
     $("#rightBar").show();
