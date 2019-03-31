@@ -57,6 +57,9 @@ firebase.auth().onAuthStateChanged((user) => {
     // No user is signed in.
     $("#classic").show();
     $("#actual").hide();
+    $("#displayName").text("");
+    $("#display").attr("src", "assets/images/pfp.png");
+    $("#role").text("");
   }
 });
 
