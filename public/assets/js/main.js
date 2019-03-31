@@ -130,7 +130,8 @@ $("#newProfile").validate({
             phone: $("#pnum").val(),
             profile: path,
             uid: user.uid,
-            role: $("input[name=role]:checked", "#newProfile").val()
+            role: $("input[name=role]:checked", "#newProfile").val(),
+            available: true
           });
         },
         error: (xhr, statusCode, e) => {
