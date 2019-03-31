@@ -67,8 +67,7 @@ function hideProfileSettings() {
 
 function openListing() {
 	$("#toggle").hide();
-	$("#map").hide();
-	$("#map1").hide();
+	$("#rightBar").hide();
   $("#btnOptions").hide();
   
 	$("#listPop").empty();
@@ -105,13 +104,7 @@ function openListing() {
 function hideListing() {
 	$("#listingD").hide();
 	$(".left-bar").removeClass("plsslide");
-	if (toggleMainMap) {
-		$("#map").show();
-		$("#map1").hide();
-	} else {
-		$("#map").hide();
-		$("#map1").show();
-	}
+	$("#rightBar").show();
 	$("#toggle").show();
 	$("#btnOptions").show();
 }
