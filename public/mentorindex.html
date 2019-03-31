@@ -39,7 +39,7 @@
   <script>
     var map = null;
     class User {
-      constructor(name, email, address, long, lat, phone, uid, profile, role, size) {
+      constructor(name, email, address, long, lat, phone, uid, profile, role, size, available) {
         this.name = name;
         this.email = email;
         this.address = address;
@@ -50,6 +50,7 @@
         this.profilePath = profile;
         this.role = role;
         this.size = size;
+        this.available = available;
       }
     }
 
@@ -154,8 +155,8 @@ function initMap() {
         var user = new User(info.name, info.email, info.address,
                             info.long, info.lat, info.phone,
                             info.uid, info.profile,
-                            info.role, info.size);
-        console.log(user.long); 
+                            info.role, info.size, info.available);
+        //console.log(user.long); 
         
         var storeLocation= {lat: user.lat, lng: user.long};
         var marker = new google.maps.Marker({
