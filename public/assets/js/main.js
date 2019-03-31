@@ -78,7 +78,7 @@ function openListing() {
 	$("#map1").hide();
   $("#btnOptions").hide();
   
-	$("#list").empty();
+	$("#listPop").empty();
 	var query = database.ref("users");
 	query.once("value").then((snapshot) => {
 		snapshot.forEach((shot) => {
