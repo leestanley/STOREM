@@ -33,38 +33,7 @@
             </div>
             <div id="classic">
                 <img class="logo" src="assets/images/logo.png">
-                <div class="leaderboard-container mx-auto">
-                  <div class="goback ml-5">
-                    <img src="assets/images/return.png" class="goback-logo"> 
-                  </div>
-                  <table class="container">
-                      <thead>
-                        <tr>
-                          <th><h1>Owner's Name</h1></th>
-                          <th><h1>Address</h1></th>
-                          <th><h1>Contact Info</h1></th>
-                          <th><h1>Availability?</h1></th>
-                          <th><h1>Option</h1></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Google</td>
-                          <td>9518</td>
-                          <td>6369</td>
-                          <td>01:32:50</td>
-                          <td>01:32:50</td>
-                        </tr>
-                        <tr>
-                          <td>Twitter</td>
-                          <td>7326</td>
-                          <td>10437</td>
-                          <td>00:51:22</td>
-                          <td>01:32:50</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
+                
                 <div class="btns-container">
                     <button id="login" class="sigin-btn">
                         <div class="top-line btn-lines"></div>
@@ -81,6 +50,24 @@
             <!--User logged in-->
             <div id="actual" class="logged-in" style="display: none;">
                 <img class="logo2" src="assets/images/hor-logo.png">
+                <div id="listingD" class="leaderboard-container mx-auto" style="display:none;">
+                    <div class="goback ml-5">
+                      <img src="assets/images/return.png" class="goback-logo"> 
+                    </div>
+                    <table class="container" id="houseListings">
+                        <thead>
+                          <tr>
+                            <th><h1>Owner's Name</h1></th>
+                            <th><h1>Address</h1></th>
+                            <th><h1>Contact Info</h1></th>
+                            <th><h1>Availability</h1></th>
+                            <th><h1>Option</h1></th>
+                          </tr>
+                        </thead>
+                        <tbody id="listPop">
+                        </tbody>
+                      </table>
+                  </div>
                 <div id="profileD" class="signup-containers justify-content-center" style="display: none;">
                         <div class="name-input">
                             <label> Name </label>
@@ -157,7 +144,7 @@
                             <a id="editProfileBtn" class="btn-edit"> EDIT </a>
                         </div>
                         <div class="btn-edit-container listing mt-3">
-                            <a id="listing" class="btn-edit"> LISTING </a>
+                            <a id="showListings" class="btn-edit"> LISTING </a>
                         </div>
                         <div class="btn-edit-container logout mt-3 mb-5">
                             <a id="logout" class="btn-edit"> LOGOUT </a>
@@ -377,5 +364,4 @@
     <script src="assets/js/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
 </body>
-
 </html>
