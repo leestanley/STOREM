@@ -8,6 +8,10 @@ html, body {
 
 button:focus {outline:0;}
 
+.btns-container:active > .left-bar{
+
+}
+
 #map {
     height: 100%;
     overflow: hidden;
@@ -16,31 +20,34 @@ button:focus {outline:0;}
 .logo{
     height: 20rem;
     position: absolute;
-    width: 70%;
+    max-width: 70%;
     left: 50%;
     top: 30%;
     transform: translate(-50%, -50%);
 }
 
+.logo2{
+    height: 10rem;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
 .left-bar{
-    background-color: #00adb5;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
 .right-bar{
-    background-color: #00adb5;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
 .content{
     height: 100vh;
-    background-color: #00adb5;
-    padding-left: inherit !important;
-    padding-right: inherit !important;
     margin-left: inherit !important;
     margin-right: inherit !important;
+    transition: width 2s;
 }
 
 .btns-container{
@@ -123,6 +130,67 @@ button:focus {outline:0;}
     font-family: 'Courier New', Courier, monospace;
     text-transform: lowercase !important;
     font-weight: lighter !important;
+}
+
+.pfp-container{
+    width: 100%
+}
+
+.user-name{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white !important;
+    position: relative;
+    top: 22rem;
+    font-size: 1.5rem;
+}
+
+.btn-edit-container{
+    width: 60%;
+    text-align: center;
+    background-color: #00adb5;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2rem;
+    height: 3rem;
+    -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+    clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+    position: relative;
+    top: 25rem;
+}
+
+.btn-edit:hover > .btn-edit-container{
+    background-color: #033a3d;
+}
+
+.listing{
+    background-color: #01787e;
+}
+
+.logout{
+    background-color: #005155;
+}
+
+.text-data{
+    width: 100%;
+}
+
+.btn-edit{
+    width: 100%;
+    height: 100%;
+}
+
+.title-name{
+    font-size: 1rem;
+}
+
+
+.pfp{
+    border-radius: 50%;
+    height: 150px;
+    position: relative;
+    top: 20rem;
 }
 
 .background {
