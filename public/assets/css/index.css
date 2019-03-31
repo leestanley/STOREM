@@ -39,7 +39,6 @@ html, body {
 .btns-container{
     text-align: center !important;
     position: absolute;
-    width: 100%;
     left: 50%;
     top: 60%;
     transform: translate(-50%, -50%);
@@ -85,7 +84,7 @@ html, body {
     height: 50px;
     width: 2px;
     position: absolute;
-    right: 5.8rem;
+    right: 0.3rem;
     top: 1rem;
 }
 
@@ -98,10 +97,12 @@ html, body {
 .desc-login{
     position: absolute;
     color: white !important;
-    left: 12.7rem;
+    left: 7.5rem;
     top: 2.56rem;
     font-size: 0.8rem;
     font-family: 'Courier New', Courier, monospace;
+    text-transform: lowercase !important;
+    font-weight: lighter !important;
 }
 
 .background {
@@ -127,4 +128,10 @@ html, body {
     0%{background-position:20% 0%}
     50%{background-position:81% 100%}
     100%{background-position:20% 0%}
+}
+
+@media screen and (max-width:840px) {
+    .right-bar{
+        display: none;
+    }
 }
