@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>LA Hacks 2019</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -31,100 +33,33 @@
       <div class="card-block" id="geometry"></div>
     </div>
     <div id="map"></div>
-    <script>
-      function initMap() {
-        // Styles a map in night mode.
-        var uluru = {lat: 34.0689, lng: -118.4452}
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: uluru,
-          zoom: 14,
-          styles: [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.attraction',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-            {
-              featureType: 'poi.business',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ]
-        });
-
-
-      }
-
-
-
-
-
-    </script>
+ 
   <script>
+    class User {
+      constructor(name, email, address, long, lat, phone, uid, profile, role, size) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.long = long;
+        this.lat = lat;
+        this.phone = phone;
+        this.uid = uid;
+        this.profilePath = profile;
+        this.role = role;
+        this.size = size;
+      }
+    }
+
+    var config = {
+      apiKey: "AIzaSyDxOS4bGXOb6I4e1ZrywFWAkvGTN4LXU_4",
+      authDomain: "lahacks2019-ff0ad.firebaseapp.com",
+      databaseURL: "https://lahacks2019-ff0ad.firebaseio.com",
+      projectId: "lahacks2019-ff0ad",
+      storageBucket: "gs://lahacks2019-ff0ad.appspot.com"
+    };
+
+    firebase.initializeApp(config);
+
     // Call Geocode
     //geocode();
 
@@ -266,13 +201,29 @@
           ]
         });
 
-        var test= {lat: lat, lng: lng};
+
+        var query = firebase.database().ref("users");
+        query.once("value").then((snapshot) => {
+          snapshot.forEach((shot) => {
+            var info = shot.val();
+            var user = new User(info.name, info.email, info.address,
+                                info.long, info.lat, info.phone,
+                                info.uid, info.profile,
+                                info.role, info.size);
+            
+            firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
+              var test= {lat: lat, lng: lng};
 
 
-        var marker = new google.maps.Marker({
-          position: test,
-          map: map
+              var marker = new google.maps.Marker({
+                position: test,
+                map: map
+              });
+            });
+          });
         });
+
+        
 
 
 

@@ -1,3 +1,18 @@
+class User {
+  constructor(name, email, address, long, lat, phone, uid, profile, role, size) {
+    this.name = name;
+    this.email = email;
+    this.address = address;
+    this.long = long;
+    this.lat = lat;
+    this.phone = phone;
+    this.uid = uid;
+    this.profilePath = profile;
+    this.role = role;
+    this.size = size;
+  }
+}
+
 var database = firebase.database();
 var storage = firebase.storage();
 
@@ -12,6 +27,22 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#newProfile").show();
       } else {
         console.log(user.displayName + " already has a profile created.");
+        console.log("/////");
+
+        var query = database.ref("users");
+        query.once("value").then((snapshot) => {
+          snapshot.forEach((shot) => {
+            var info = shot.val();
+            var user = new User(info.name, info.email, info.address,
+                                info.long, info.lat, info.phone,
+                                info.uid, info.profile,
+                                info.role, info.size);
+            
+            firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
+              console.log(user.name + " (" + u + ")");
+            });
+          });
+        });
       }
     });
   } else {
@@ -55,7 +86,7 @@ $("#picSel").change(() => {
 });
 
 $("#newProfile").validate({
-  submitHandler: function(form) {
+  submitHandler: (form) => {
     var sel = window.document.getElementById("picSel");
     if ((sel.files && sel.files[0])) {
       var user = firebase.auth().currentUser;
