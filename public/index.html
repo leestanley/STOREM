@@ -254,6 +254,7 @@ function initMap() {
                     $("#tooltip_phone").text(info.phone);
                     $("#tooltip_size").text(info.size);
                     $("#tooltip_address").text(info.address);
+                    $("#tooltip_pfp").attr("src", u);
 
                     $("#tooltip_rent").click(() => {
                       if (info.available) {
