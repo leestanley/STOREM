@@ -59,23 +59,23 @@
         <img class="logo2" src="assets/images/hor-logo.png">
         <div class="userprofile-container row justify-content-center">
           <div class="pfp-container row justify-content-center">
-            <img src="assets/images/pfp.png" class="pfp ">
+            <img id="display" src="assets/images/pfp.png" class="pfp">
           </div>
           <div class="text-data text-center">
-            <a class="user-name"> Morgan Freeman </a>
+            <a id="displayName" class="user-name"></a>
             <br>
-            <a class="title-name user-name"> Renter </a>
+            <a id="role" class="title-name user-name"></a>
             <br>
           </div>
           <div class="all-logged-btns-container row justify-content-center">
             <div class="btn-edit-container">
-              <a class="btn-edit"> Edit </a>
+              <a id="editProfile" class="btn-edit"> Edit </a>
             </div>
             <div class="btn-edit-container listing mt-3">
-              <a class="btn-edit"> LISTING </a>
+              <a id="listing" class="btn-edit"> LISTING </a>
             </div>
             <div class="btn-edit-container logout mt-3 mb-5">
-              <a class="btn-edit"> LOGOUT </a>
+              <a id="logout" class="btn-edit"> LOGOUT </a>
             </div>
           </div>
         </div>
@@ -218,31 +218,52 @@ function initMap() {
   });
 
   var infoW = new google.maps.InfoWindow({
-    content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a class='host-name'> Mogran Freeman</a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address'> 9840 Dank Memes St. North Korea 9111</a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount'> 50sqft</a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount'> dank@me.me</a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount'> (626) 696-6969</a> </div> </div> <div class='rent-host justify-content-center row'> <button id='rent' class='rent-btn'> Rent</button> </div> </div>"
+    content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' id='tooltip_pfp' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a id='tooltip_name' class='host-name'></a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address' id='tooltip_address'></a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount' id='tooltip_size'></a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount' id='tooltip_email'></a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount' id='tooltip_phone'></a> </div> </div> <div class='rent-host justify-content-center row'> <button id='tooltip_rent' class='rent-btn'> Rent</button> </div> </div>"
   });
 
   var query = firebase.database().ref("users");
   query.once("value").then((snapshot) => {
       snapshot.forEach((shot) => {
           var info = shot.val();
-          /*info.name, info.email, info.address,
+          if (info.role == 0) {
+            // host
+            /*info.name, info.email, info.address,
               info.long, info.lat, info.phone,
               info.uid, info.profile,
               info.role, info.size, info.available*/
 
-          firebase.storage().ref().child(info.profile).getDownloadURL().then((u) => {
-              var marker = new google.maps.Marker({
-                  position: {
-                      lat: info.lat,
-                      lng: info.long
-                  },
-                  map: map
-              });
+            firebase.storage().ref().child(info.profile).getDownloadURL().then((u) => {
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: info.lat,
+                        lng: info.long
+                    },
+                    map: map
+                });
 
-              google.maps.event.addListener(marker, "click", () => {
-                infoW.open(map, marker);
-              });
-          });
+                google.maps.event.addListener(marker, "click", () => {
+                  infoW.open(map, marker);
+                  // give it time to find the elements as it opens.
+                  setTimeout(() => {
+                    if (info.available == false) {
+                      $("#tooltip_rent").text("NOT AVAIL.");
+                    }
+
+                    $("#tooltip_name").text(info.name);
+                    $("#tooltip_email").text(info.email);
+                    $("#tooltip_phone").text(info.phone);
+                    $("#tooltip_size").text(info.size);
+                    $("#tooltip_address").text(info.address);
+
+                    $("#tooltip_rent").click(() => {
+                      if (info.available) {
+                        console.log("handle the rent..");
+                      }  
+                    });
+                  }, 500);
+                });
+            });
+          }
       });
   });
 }
