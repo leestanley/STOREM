@@ -41,8 +41,7 @@ function openProfileSettings() {
 			}
 		});
 		$("#toggle").hide();
-		$("#map").hide();
-		$("#map1").hide();
+		$("#rightBar").hide();
 		$("#btnOptions").hide();
 		$(".left-bar").addClass("plsslide");
 		$("#profileD").show();
@@ -61,13 +60,7 @@ function hideProfileSettings() {
 	$("#previewPic").attr("src", "");
 	$("#profileD").hide();
 	$(".left-bar").removeClass("plsslide");
-	if (toggleMainMap) {
-		$("#map").show();
-		$("#map1").hide();
-	} else {
-		$("#map").hide();
-		$("#map1").show();
-	}
+	$("#rightBar").show();
 	$("#toggle").show();
 	$("#btnOptions").show();
 }
