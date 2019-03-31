@@ -88,6 +88,18 @@ function openListing() {
         firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
           var item = '<tr><td><img src="' + u + '" width="64" height="64" align="left" class="ml-2"> ' + user.name + '</td><td>' + user.address + '</td><td>' + user.email + ' (' + user.phone + ')</td><td>' + (user.available == false ? "NO (" : "YES (") + user.size + ')</td><td><input type="button" id="rent_' + user.uid + '" value="Rent"' + (user.available == false ? "disabled" : "") + '></td></tr>';
           $("#houseListings").append(item);
+          $("#rent_" + user.uid).click(() => {
+            if (firebase.auth().currentUser) {
+              if (user.available != false) {
+                console.log("handle the rent..");
+                alert("Rented " + user.name + "'s house! [DEMO]");
+              } else {
+                alert("This is not available for rent! Contact the owner for questions.");
+              }
+            } else {
+              alert("Please login to Storem before attempting to rent anything.");
+            }
+          });
         });
       }
 		});
@@ -259,6 +271,7 @@ $("#editProfile").click(() => {
 		alert("Please fill in all fields!");
 	}
 });
+
 var toggleMainMap = true;
 $("#toggle").click(() => {
 	toggleMainMap = !toggleMainMap;
@@ -270,5 +283,7 @@ $("#toggle").click(() => {
 		$("#map1").show();
 	}
 });
+
 $("#editProfileBtn").click(openProfileSettings);
 $("#showListings").click(openListing);
+$("#backListing").click(hideListing);
