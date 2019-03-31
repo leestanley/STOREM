@@ -161,3 +161,15 @@ $("#newProfile").validate({
     }
   }
 });
+
+var toggleMainMap = true;
+$("#toggle").click(() => {
+  toggleMainMap = !toggleMainMap;
+  if (toggleMainMap) {
+    $("#map").show();
+    $("#map1").hide();
+  } else {
+    $("#map").hide();
+    $("#map1").show();
+  }
+});
