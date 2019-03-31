@@ -30,11 +30,11 @@ firebase.auth().onAuthStateChanged((user) => {
       } else {
         var userData = shot.val();
 
-        $("#displayName").val(user.displayName);
+        $("#displayName").text(user.displayName);
         firebase.storage().ref().child(userData.profile).getDownloadURL().then((u) => {
           $("#display").attr("src", u);
         });
-        $("#role").val(userData.role == 0 ? "Host" : "Renter");
+        $("#role").text(userData.role == 0 ? "Host" : "Renter");
 
         var query = database.ref("users");
         query.once("value").then((snapshot) => {
