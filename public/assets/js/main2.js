@@ -18,7 +18,8 @@ var storage = firebase.storage();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    $("#login").hide();
+    $("#classic").hide();
+    $("#actual").show();
     database.ref("/users/" + user.uid).once("value").then((shot) => {
       var newUser = (shot.val() == null);
       if (newUser) {
@@ -48,7 +49,8 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     // No user is signed in.
-    $("#login").show();
+    $("#classic").show();
+    $("#actual").hide();
   }
 });
 
