@@ -95,6 +95,15 @@ html, body {
     top: 1.5rem;
 }
 
+.desc-login{
+    position: absolute;
+    color: white !important;
+    left: 12.7rem;
+    top: 2.56rem;
+    font-size: 0.8rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .background {
     background: linear-gradient(18deg, #00adb5, #393e46, #222831);
     background-size: 600% 600%;
