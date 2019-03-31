@@ -331,7 +331,6 @@ button:focus {outline:0;}
     font-size: 1rem;
 }
 
-
 .pfp{
     border-radius: 50%;
     height: 150px;
@@ -339,9 +338,9 @@ button:focus {outline:0;}
     top: 20rem;
 }
 
-.gm-style-iw gm-style-iw-cz {
+/* .gm-style-iw gm-style-iw-cz {
     background-color: transparent !important;
-}
+} */
 
 .background {
     background: linear-gradient(18deg, #00adb5, #393e46, #222831);
