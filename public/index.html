@@ -30,7 +30,8 @@
     <div class="row content">
       <div class="left-bar background col-md-3">
           <!--<form>-->
-          <div id="classic">
+          <!-- <div id="classic"> -->
+            <div style="display: none;">
             <img class="logo" src="assets/images/logo.png">
             <div class="btns-container">
               <button id="login" class="sigin-btn">
@@ -47,7 +48,8 @@
         <!--</form>-->
 
         <!--User logged in-->
-        <div id="actual" class="logged-in" style="display: none;">
+        <!-- <div id="actual" class="logged-in" style="display: none;"> -->
+        <div>
           <img class="logo2" src="assets/images/hor-logo.png">
           <div class="userprofile-container row justify-content-center">
             <div class="pfp-container row justify-content-center">
@@ -59,14 +61,16 @@
               <a class="title-name user-name"> Renter </a>
               <br>
             </div>
-            <div class="btn-edit-container">
-                <a class="btn-edit"> Edit </a>
-            </div>
-            <div class="btn-edit-container listing mt-5">
-                <a class="btn-edit"> LISTING </a>
-            </div>
-            <div class="btn-edit-container logout mt-5">
-                <a class="btn-edit"> LOGOUT </a>
+            <div class="all-logged-btns-container row justify-content-center">
+              <div class="btn-edit-container">
+                  <a class="btn-edit"> Edit </a>
+              </div>
+              <div class="btn-edit-container listing mt-3">
+                  <a class="btn-edit"> LISTING </a>
+              </div>
+              <div class="btn-edit-container logout mt-3">
+                  <a class="btn-edit"> LOGOUT </a>
+              </div>
             </div>
           </div>
         </div>

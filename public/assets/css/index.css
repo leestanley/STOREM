@@ -8,8 +8,10 @@ html, body {
 
 button:focus {outline:0;}
 
-.btns-container:active > .left-bar{
-
+.all-logged-btns-container{
+    width: 100%;
+    position: relative;
+    top: 25rem;
 }
 
 #map {
@@ -41,10 +43,11 @@ button:focus {outline:0;}
 .right-bar{
     padding-left: 0 !important;
     padding-right: 0 !important;
+    height: 100%;
 }
 
 .content{
-    height: 100vh;
+    height: 100%;
     margin-left: inherit !important;
     margin-right: inherit !important;
     transition: width 2s;
@@ -157,7 +160,32 @@ button:focus {outline:0;}
     -webkit-clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
     clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
     position: relative;
-    top: 25rem;
+}
+
+.gm-style .gm-style-iw-t::after{
+    display: none !important;
+}
+
+.gm-style .gm-style-iw-c{
+    border-radius: inherit !important;
+}
+
+.gm-style-iw{
+    -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
+    max-width: 20rem;
+    height: 20rem;
+    width: 25rem;
+    max-height: 20rem;
+    margin-top: -0.5rem;
+}
+
+.view-link{
+    display: none;
+}
+
+.gm-style:after{
+    display: none !important;
 }
 
 .btn-edit:hover > .btn-edit-container{
@@ -221,5 +249,8 @@ button:focus {outline:0;}
 @media screen and (max-width:840px) {
     .right-bar{
         display: none;
+    }
+    .logo2{
+        max-width: 20rem;
     }
 }
