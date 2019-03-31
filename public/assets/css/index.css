@@ -38,6 +38,15 @@ button:focus {outline:0;}
 .left-bar{
     padding-left: 0 !important;
     padding-right: 0 !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    overflow-y: scroll;
+    height: auto;
+    min-height: 100%;
+    transition: left 0.125s ease-in-out;
 }
 
 .right-bar{
