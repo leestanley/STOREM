@@ -60,9 +60,12 @@ function hideProfileSettings() {
 	$("#previewPic").attr("src", "");
 	$("#profileD").hide();
 	$(".left-bar").removeClass("plsslide");
-	$("#rightBar").show();
 	$("#toggle").show();
 	$("#btnOptions").show();
+  
+  setTimeout(() => {
+    $("#rightBar").show();
+  }, 1000);
 }
 
 function openListing() {
@@ -104,9 +107,12 @@ function openListing() {
 function hideListing() {
 	$("#listingD").hide();
 	$(".left-bar").removeClass("plsslide");
-	$("#rightBar").show();
 	$("#toggle").show();
-	$("#btnOptions").show();
+  $("#btnOptions").show();
+
+  setTimeout(() => {
+    $("#rightBar").show();
+  }, 1000);
 }
 firebase.auth().onAuthStateChanged((user) => {
 	if (user) {
@@ -273,5 +279,10 @@ $("#toggle").click(() => {
 $("#editProfileBtn").click(openProfileSettings);
 $("#showListings").click(openListing);
 
-$("#backListing").click(hideListing);
-$("#backProfile").click(hideProfileSettings);
+$("#logo2").click(() => {
+  if ($("#profileD").is(":visible")) {
+    hideProfileSettings();
+  } else if ($("#listingD").is(":visible")) {
+    hideListing();
+  }
+});
