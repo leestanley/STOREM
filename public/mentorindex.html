@@ -4,6 +4,8 @@
     <title>LA Hacks 2019</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -35,6 +37,7 @@
     <div id="map"></div>
  
   <script>
+    var map = null;
     class User {
       constructor(name, email, address, long, lat, phone, uid, profile, role, size) {
         this.name = name;
@@ -60,7 +63,114 @@
 
     firebase.initializeApp(config);
 
-    // Call Geocode
+function initMap() {
+    // Styles a map in night mode and places a marker at the searched location
+    var uluru = {lat: 34.0689, lng: -118.4452}
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: uluru,
+      zoom: 5,
+      styles: [
+        {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+        {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+        {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels.text.fill',
+          stylers: [{color: '#d59563'}]
+        },
+        {
+          featureType: 'poi.attraction',
+          elementType: 'all',
+          stylers: [{visibility: "off"}]
+        },
+        {
+          featureType: 'poi.business',
+          elementType: 'all',
+          stylers: [{visibility: "off"}]
+        },
+        {
+          featureType: 'poi.park',
+          elementType: 'geometry',
+          stylers: [{color: '#263c3f'}]
+        },
+        {
+          featureType: 'poi.park',
+          elementType: 'labels.text.fill',
+          stylers: [{color: '#6b9a76'}]
+        },
+        {
+          featureType: 'road',
+          elementType: 'geometry',
+          stylers: [{color: '#38414e'}]
+        },
+        {
+          featureType: 'road',
+          elementType: 'geometry.stroke',
+          stylers: [{color: '#212a37'}]
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels.text.fill',
+          stylers: [{color: '#9ca5b3'}]
+        },
+        {
+          featureType: 'road.highway',
+          elementType: 'all',
+          stylers: [{visibility: "off"}]
+        },
+
+        {
+          featureType: 'transit',
+          elementType: 'geometry',
+          stylers: [{color: '#2f3948'}]
+        },
+        {
+          featureType: 'transit.station',
+          elementType: 'labels.text.fill',
+          stylers: [{color: '#d59563'}]
+        },
+        {
+          featureType: 'water',
+          elementType: 'geometry',
+          stylers: [{color: '#17263c'}]
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.fill',
+          stylers: [{color: '#515c6d'}]
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.stroke',
+          stylers: [{color: '#17263c'}]
+        }
+      ]
+    });
+
+    var query = firebase.database().ref("users");
+    query.once("value").then((snapshot) => {
+      snapshot.forEach((shot) => {
+        var info = shot.val();
+        var user = new User(info.name, info.email, info.address,
+                            info.long, info.lat, info.phone,
+                            info.uid, info.profile,
+                            info.role, info.size);
+        console.log(user.long); 
+        
+        var storeLocation= {lat: user.lat, lng: user.long};
+        var marker = new google.maps.Marker({
+            position: storeLocation,
+            map: map
+          });
+        // firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
+          
+        // });
+      });
+    });
+         
+}
+        
+// Call Geocode
     //geocode();
 
     // Get location form
@@ -83,7 +193,7 @@
       })
       .then(function(response){
         // Log full response
-        console.log(response);
+       // console.log(response);
 
         // Formatted Address
         var formattedAddress = response.data.results[0].formatted_address;
@@ -114,116 +224,13 @@
         `;
 
 
+        var searchedLocation= {lat: lat, lng: lng};
 
 
-
-
-        // Styles a map in night mode and places a marker at the searched location
-        var uluru = {lat: 34.0689, lng: -118.4452}
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: uluru,
-          zoom: 6,
-          styles: [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.attraction',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-            {
-              featureType: 'poi.business',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'all',
-              stylers: [{visibility: "off"}]
-            },
-
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ]
+        var marker = new google.maps.Marker({
+          position: searchedLocation,
+          map: map
         });
-
-
-        var query = firebase.database().ref("users");
-        query.once("value").then((snapshot) => {
-          snapshot.forEach((shot) => {
-            var info = shot.val();
-            var user = new User(info.name, info.email, info.address,
-                                info.long, info.lat, info.phone,
-                                info.uid, info.profile,
-                                info.role, info.size);
-            
-            firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
-              var test= {lat: lat, lng: lng};
-
-
-              var marker = new google.maps.Marker({
-                position: test,
-                map: map
-              });
-            });
-          });
-        });
-
-        
 
 
 
@@ -232,11 +239,7 @@
         document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
         // document.getElementById('address-components').innerHTML = addressComponentsOutput;
         document.getElementById('geometry').innerHTML = geometryOutput;
-         firebase.database().ref('property/' + formattedAddress).set({
-            formattedAddress: formattedAddress,
-            lat: latd,
-            lng: long,
-          });
+         
 
 
       })
@@ -244,11 +247,9 @@
         console.log(error);
       });
     }
+        
   </script>
     <script type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap"
-    async defer></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+   
   </body>
 </html>
