@@ -2,359 +2,349 @@
 <html>
 
 <head>
-  <title> STOREM </title>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta charset="utf-8">
-  <link rel="shortcut icon" type="image/png" href="assets/images/icon.png" />
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="assets/css/index.css"></link>
-  <script src="assets/js/sidebar.js"></script>
-  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
-  <script>
-    var config = {
-      apiKey: "AIzaSyDxOS4bGXOb6I4e1ZrywFWAkvGTN4LXU_4",
-      authDomain: "lahacks2019-ff0ad.firebaseapp.com",
-      databaseURL: "https://lahacks2019-ff0ad.firebaseio.com",
-      projectId: "lahacks2019-ff0ad",
-      storageBucket: "gs://lahacks2019-ff0ad.appspot.com"
-    };
+    <title> STOREM </title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon.png" />
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css"></link>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDxOS4bGXOb6I4e1ZrywFWAkvGTN4LXU_4",
+            authDomain: "lahacks2019-ff0ad.firebaseapp.com",
+            databaseURL: "https://lahacks2019-ff0ad.firebaseio.com",
+            projectId: "lahacks2019-ff0ad",
+            storageBucket: "gs://lahacks2019-ff0ad.appspot.com"
+        };
 
-    firebase.initializeApp(config);
-  </script>
+        firebase.initializeApp(config);
+    </script>
 </head>
 
 <body>
-  <div class="row content">
-    <div class="left-bar background col-md-3">
-      <div id="classic">
-        <div class="settings-icon">
-          <input type="image" id="toggle" src="assets/images/dots.png" class="dots-icon mr-5 mt-3">
-        </div>
-        <img class="logo" src="assets/images/logo.png">
-        <form>
-            <div class="signup-containers justify-content-center" style="display: none;">
-            <div class="name-input">
-              <label> Name </label> <br>
-              <input class="text-input" type="text" id="pname" readonly name="form[name]">
-            </div> <br>
-            <div class="email-input">
-              <label> Email </label> <br>
-              <input class="text-input" type="email" id="pemail" readonly name="form[email]">
-            </div><br>
-            <div class="adress-input">
-              <label> Address </label><br>
-              <input class="text-input" type="text" id="paddress" name="form[address]" required>
-            </div><br>
-            <div class="stroage-input">
-              <label> Square Foot of Storage </label> <br>
-              <input class="text-input" type="number" id="pft" name="form[sqft]" required>
-            </div> <br>
-            <div class="phone-input">
-              <label> Phone Number </label> <br>
-              <input class="text-input" type="text" id="pnum" name="form[phone]" required>
-            </div> <br>
-            <div class="pfp-input">
-              <label> Profile Picture </label> <br>
-              <img class="text-stuff" id="previewPic" src="" alt="Preview Profile Picture"> <br>
-              <input class="text-stuff" type="file" required accept="image/*" multiple="false" id="picSel" width="128" height="128" name="form[file]">
-            </div><br>
-            <div class="role-input">
-              <label class="text-stuff"> House Owner / Renter? </label> <br>
-              <input class="text-stuff" type="radio" name="role" value="0" checked>
-              <a class="text-stuff"> House Owner </a>
-              <input class="text-stuff" type="radio" name="role" value="1"> 
-              <a class="text-stuff"> Renter </a>
+    <div class="row content">
+        <div class="left-bar background col-md-3">
+            <div class="settings-icon">
+                <input type="image" id="toggle" src="assets/images/dots.png" class="dots-icon mr-5 mt-3">
             </div>
-            <div class="ava-input">
-              <label> Availability </label> <br>
-              <input type="checkbox" id="avail" name="availability" value="0">
-              <a class="text-stuff"> Yes </a>
-            </div>
-              <!-- <input class="mb-5"type="submit" value="Register"> -->
-            <div class="all-logged-btns-container row justify-content-center reg-btn mb-5">
-                <div class="btn-edit-container">
-                  <a id="editProfile"  lass="mb-5" type="sumbit" class="btn-edit" value="Register"> Register </a>
+            <div id="classic">
+                <img class="logo" src="assets/images/logo.png">
+                
+                <div class="btns-container">
+                    <button id="login" class="sigin-btn">
+                        <div class="top-line btn-lines"></div>
+                        <div class="left-line btn-lines"></div>
+                        <div class="right-line btn-lines"></div>
+                        <div class="bottom-line btn-lines"></div>
+                        <a class="desc-login"> with google.</a> Login
+                    </button>
+                    <br>
                 </div>
-              </div>
             </div>
-        </form>
-        <div class="btns-container">
-          <button id="login" class="sigin-btn">
-            <div class="top-line btn-lines"></div>
-            <div class="left-line btn-lines"></div>
-            <div class="right-line btn-lines"></div>
-            <div class="bottom-line btn-lines"></div>
-            <a class="desc-login"> with google.</a>
-            Login
-          </button>
-          <br>
-        </div>
-      </div>
-    <!--</form>-->
+            <!--</form>-->
 
-    <!--User logged in-->
-      <div id="actual" class="logged-in" style="display: none;">
-        <img class="logo2" src="assets/images/hor-logo.png">
-        <div class="userprofile-container row justify-content-center">
-          <div class="pfp-container row justify-content-center">
-            <img id="display" src="assets/images/pfp.png" class="pfp">
-          </div>
-          <div class="text-data text-center">
-            <a id="displayName" class="user-name"></a>
-            <br>
-            <a id="role" class="title-name user-name"></a>
-            <br>
-          </div>
-          <div class="all-logged-btns-container row justify-content-center">
-            <div class="btn-edit-container">
-              <a id="editProfile" class="btn-edit"> Edit </a>
+            <!--User logged in-->
+            <div id="actual" class="logged-in" style="display: none;">
+                <img class="logo2" src="assets/images/hor-logo.png">
+                <div id="profileD" class="signup-containers justify-content-center" style="display: none;">
+                        <div class="name-input">
+                            <label> Name </label>
+                            <br>
+                            <input class="text-input" type="text" id="pname" readonly name="form[name]">
+                        </div>
+                        <br>
+                        <div class="email-input">
+                            <label> Email </label>
+                            <br>
+                            <input class="text-input" type="email" id="pemail" readonly name="form[email]">
+                        </div>
+                        <br>
+                        <div class="adress-input">
+                            <label> Address </label>
+                            <br>
+                            <input class="text-input" type="text" id="paddress" name="form[address]" required>
+                        </div>
+                        <br>
+                        <div class="stroage-input">
+                            <label> Square Foot of Storage </label>
+                            <br>
+                            <input class="text-input" type="number" id="pft" name="form[sqft]" required>
+                        </div>
+                        <br>
+                        <div class="phone-input">
+                            <label> Phone Number </label>
+                            <br>
+                            <input class="text-input" type="text" id="pnum" name="form[phone]" required>
+                        </div>
+                        <br>
+                        <div class="pfp-input">
+                            <label> Profile Picture </label>
+                            <br>
+                            <img class="text-stuff" id="previewPic" src="" alt="Preview Profile Picture">
+                            <br>
+                            <input class="text-stuff" type="file" required accept="image/*" multiple="false" id="picSel" width="128" height="128" name="form[file]">
+                        </div>
+                        <br>
+                        <div class="role-input">
+                            <label class="text-stuff"> House Owner / Renter? </label>
+                            <br>
+                            <input class="text-stuff" type="radio" name="role" value="0" checked>
+                            <a class="text-stuff"> House Owner </a>
+                            <input class="text-stuff" type="radio" name="role" value="1">
+                            <a class="text-stuff"> Renter </a>
+                        </div>
+                        <div class="ava-input">
+                            <label> Availability (only applies for owners) </label>
+                            <br>
+                            <input type="checkbox" id="avail" name="availability" value="0">
+                            <a class="text-stuff"> Yes </a>
+                        </div>
+                        <!-- <input class="mb-5"type="submit" value="Register"> -->
+                        <div class="all-logged-btns-container row justify-content-center reg-btn mb-5">
+                            <div class="btn-edit-container">
+                                <input id="editProfile" lass="mb-5" type="button" class="btn-edit" value="Save"> Save
+                            </div>
+                        </div>
+                </div>
+
+                <div id="btnOptions" class="userprofile-container row justify-content-center">
+                    <div class="pfp-container row justify-content-center">
+                        <img id="display" src="assets/images/pfp.png" class="pfp">
+                    </div>
+                    <div class="text-data text-center">
+                        <a id="displayName" class="user-name"></a>
+                        <br>
+                        <a id="role" class="title-name user-name"></a>
+                        <br>
+                    </div>
+                    <div class="all-logged-btns-container row justify-content-center">
+                        <div class="btn-edit-container">
+                            <a id="editProfileBtn" class="btn-edit"> EDIT </a>
+                        </div>
+                        <div class="btn-edit-container listing mt-3">
+                            <a id="listing" class="btn-edit"> LISTING </a>
+                        </div>
+                        <div class="btn-edit-container logout mt-3 mb-5">
+                            <a id="logout" class="btn-edit"> LOGOUT </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="btn-edit-container listing mt-3">
-              <a id="listing" class="btn-edit"> LISTING </a>
-            </div>
-            <div class="btn-edit-container logout mt-3 mb-5">
-              <a id="logout" class="btn-edit"> LOGOUT </a>
-            </div>
-          </div>
         </div>
-      </div>
+        <!--User logged in-->
+
+        <div class="right-bar col-md-9">
+            <div id="map"></div>
+            <iframe id="map1" width="100%" height="100%" absolute src="https://google.org/crisismap/us-wildfires?hl=en&llbox=50.53%2C21.89%2C-59.07%2C-124.99&t=TERRAIN&layers=5%2C2%2C16%2C17%2C9&embedded=true" style="position: absolute !important; display: none"></iframe>
+        </div>
     </div>
-    <!--User logged in-->
 
-  <div class="right-bar col-md-9">
-    <div id="map"></div>
-    <iframe id="map1" width="100%" height="100%" absolute src="https://google.org/crisismap/us-wildfires?hl=en&llbox=50.53%2C21.89%2C-59.07%2C-124.99&t=TERRAIN&layers=5%2C2%2C16%2C17%2C9&embedded=true" style="position: absolute !important; display: none"></iframe>
-  </div>
-</div>
-
-<script>
-function initMap() {
-  // Styles a map in night mode.
-  var map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-        lat: 34.0689,
-        lng: -118.4452
-      },
-      zoom: 14,
-      styles: [{
-              elementType: 'geometry',
-              stylers: [{
-                  color: '#242f3e'
-              }]
-          },
-          {
-              elementType: 'labels.text.stroke',
-              stylers: [{
-                  color: '#242f3e'
-              }]
-          },
-          {
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#746855'
-              }]
-          },
-          {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#d59563'
-              }]
-          },
-          {
-              featureType: 'poi.attraction',
-              elementType: 'all',
-              stylers: [{
-                  visibility: "off"
-              }]
-          },
-          {
-              featureType: 'poi.business',
-              elementType: 'all',
-              stylers: [{
-                  visibility: "off"
-              }]
-          },
-          {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{
-                  color: '#263c3f'
-              }]
-          },
-          {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#6b9a76'
-              }]
-          },
-          {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{
-                  color: '#38414e'
-              }]
-          },
-          {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{
-                  color: '#212a37'
-              }]
-          },
-          {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#9ca5b3'
-              }]
-          },
-          {
-              featureType: 'road.highway',
-              elementType: 'all',
-              stylers: [{
-                  visibility: "off"
-              }]
-          },
-
-          {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{
-                  color: '#2f3948'
-              }]
-          },
-          {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#d59563'
-              }]
-          },
-          {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{
-                  color: '#17263c'
-              }]
-          },
-          {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{
-                  color: '#515c6d'
-              }]
-          },
-          {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{
-                  color: '#17263c'
-              }]
-          }
-      ]
-  });
-
-  var infoW = new google.maps.InfoWindow({
-    content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' id='tooltip_pfp' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a id='tooltip_name' class='host-name'></a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address' id='tooltip_address'></a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount' id='tooltip_size'></a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount' id='tooltip_email'></a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount' id='tooltip_phone'></a> </div> </div> <div class='rent-host justify-content-center row'> <button id='tooltip_rent' class='rent-btn'> Rent</button> </div> </div>"
-  });
-  var isOpened = false;
-  var openedFor = null;
-  var connectedOnce = false;
-
-  var query = firebase.database().ref("users");
-  query.once("value").then((snapshot) => {
-      snapshot.forEach((shot) => {
-          var info = shot.val();
-          if (info.role == 0) {
-            // host
-            /*info.name, info.email, info.address,
-              info.long, info.lat, info.phone,
-              info.uid, info.profile,
-              info.role, info.size, info.available*/
-
-            firebase.storage().ref().child(info.profile).getDownloadURL().then((u) => {
-                var marker = new google.maps.Marker({
-                    position: {
-                        lat: info.lat,
-                        lng: info.long
+    <script>
+        function initMap() {
+            // Styles a map in night mode.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 34.0689,
+                    lng: -118.4452
+                },
+                zoom: 14,
+                styles: [{
+                        elementType: 'geometry',
+                        stylers: [{
+                            color: '#242f3e'
+                        }]
+                    }, {
+                        elementType: 'labels.text.stroke',
+                        stylers: [{
+                            color: '#242f3e'
+                        }]
+                    }, {
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#746855'
+                        }]
+                    }, {
+                        featureType: 'administrative.locality',
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#d59563'
+                        }]
+                    }, {
+                        featureType: 'poi.attraction',
+                        elementType: 'all',
+                        stylers: [{
+                            visibility: "off"
+                        }]
+                    }, {
+                        featureType: 'poi.business',
+                        elementType: 'all',
+                        stylers: [{
+                            visibility: "off"
+                        }]
+                    }, {
+                        featureType: 'poi.park',
+                        elementType: 'geometry',
+                        stylers: [{
+                            color: '#263c3f'
+                        }]
+                    }, {
+                        featureType: 'poi.park',
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#6b9a76'
+                        }]
+                    }, {
+                        featureType: 'road',
+                        elementType: 'geometry',
+                        stylers: [{
+                            color: '#38414e'
+                        }]
+                    }, {
+                        featureType: 'road',
+                        elementType: 'geometry.stroke',
+                        stylers: [{
+                            color: '#212a37'
+                        }]
+                    }, {
+                        featureType: 'road',
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#9ca5b3'
+                        }]
+                    }, {
+                        featureType: 'road.highway',
+                        elementType: 'all',
+                        stylers: [{
+                            visibility: "off"
+                        }]
                     },
-                    map: map
-                });
 
-                google.maps.event.addListener(marker, "click", () => {
-                  $("#tooltip_name").text("");
-                  $("#tooltip_email").text("");
-                  $("#tooltip_phone").text("");
-                  $("#tooltip_size").text("");
-                  $("#tooltip_address").text("");
-                  $("#tooltip_pfp").attr("src", "");
-
-                  if (isOpened) {
-                    if (openedFor == info.uid) {
-                      infoW.close();
-                      openedFor = null;
-                      isOpened = false;
-                    } else {
-                      openedFor = info.uid;
-                      isOpened = true;
-                      infoW.open(map, marker);
+                    {
+                        featureType: 'transit',
+                        elementType: 'geometry',
+                        stylers: [{
+                            color: '#2f3948'
+                        }]
+                    }, {
+                        featureType: 'transit.station',
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#d59563'
+                        }]
+                    }, {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{
+                            color: '#17263c'
+                        }]
+                    }, {
+                        featureType: 'water',
+                        elementType: 'labels.text.fill',
+                        stylers: [{
+                            color: '#515c6d'
+                        }]
+                    }, {
+                        featureType: 'water',
+                        elementType: 'labels.text.stroke',
+                        stylers: [{
+                            color: '#17263c'
+                        }]
                     }
-                  } else {
-                    openedFor = info.uid;
-                    isOpened = true;
-                    infoW.open(map, marker);
-                  }
+                ]
+            });
 
-                  // give it time to find the elements as it opens.
-                  setTimeout(() => {
-                    if (info.available == false) {
-                      $("#tooltip_rent").text("NOT AVAIL.");
+            var infoW = new google.maps.InfoWindow({
+                content: "<style>.tooltip-google{ z-index: 5; width: 25rem; max-width: 25rem; height: 18rem; max-height: 18rem; position: absolute; padding: 12px; background-color: #222831 !important; -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); border-radius:10%; } .rent-host{ width: 140%; position: relative; top: 1rem; height: 5.5rem; background-color: transparent !important; } .rent-btn{ color: white !important; font-weight: bold; text-transform: uppercase; font-size: 2.5rem; width: 100%; border: none !important; background-color: #00adb5 !important; } .rent-btn:hover{ background-color: #018f96 !important; } .host-name{ color: white !important; font-weight: 400; font-size: 1.1rem; position: relative; left: 5px; word-wrap: normal; text-transform: capitalize; z-index: 2; } .tooltip-google{ height: 100% !important; } .host-name-container{ height: 100%; text-align: center; } .pfp-n-name{ display: inline !important; } .info{ display: inline !important; } .storage-amount{ color:white !important; font-weight: bold; } .storage-icon{ width: 2.5rem; } .host-address{ text-transform: capitalize; font-weight: bold; width: 100%; } .address{ width: 110%; } .pfp-tooltip{ width: 110%; border-radius: 30%; } .title{ color: white !important; } .address{ color: white !important; }</style> <div class='tooltip-google row'> <div class='pfp-n-name col-md-4'> <img class='pfp-tooltip' id='tooltip_pfp' src='assets/images/pfp.png'> <div class='host-name-container mt-2'> <a id='tooltip_name' class='host-name'></a> </div> </div> <div class='info col-md-8'> <div class='address'> <a class='host-address' id='tooltip_address'></a> </div> <div class='storage-container'> <img class='storage-icon' src='assets/images/storage.png'> <a class='storage-amount' id='tooltip_size'></a> </div> <div class='email-container'> <img class='storage-icon' src='assets/images/email.png'> <a class='storage-amount' id='tooltip_email'></a> </div> <div class='phone-container'> <img class='storage-icon' src='assets/images/phone.png'> <a class='storage-amount' id='tooltip_phone'></a> </div> </div> <div class='rent-host justify-content-center row'> <button id='tooltip_rent' class='rent-btn'> Rent</button> </div> </div>"
+            });
+            var isOpened = false;
+            var openedFor = null;
+            var connectedOnce = false;
+
+            var query = firebase.database().ref("users");
+            query.once("value").then((snapshot) => {
+                snapshot.forEach((shot) => {
+                    var info = shot.val();
+                    if (info.role == 0) {
+                        // host
+                        /*info.name, info.email, info.address,
+                          info.long, info.lat, info.phone,
+                          info.uid, info.profile,
+                          info.role, info.size, info.available*/
+
+                        firebase.storage().ref().child(info.profile).getDownloadURL().then((u) => {
+                            var marker = new google.maps.Marker({
+                                position: {
+                                    lat: info.lat,
+                                    lng: info.long
+                                },
+                                map: map
+                            });
+
+                            google.maps.event.addListener(marker, "click", () => {
+                                $("#tooltip_name").text("");
+                                $("#tooltip_email").text("");
+                                $("#tooltip_phone").text("");
+                                $("#tooltip_size").text("");
+                                $("#tooltip_address").text("");
+                                $("#tooltip_pfp").attr("src", "");
+
+                                if (isOpened) {
+                                    if (openedFor == info.uid) {
+                                        infoW.close();
+                                        openedFor = null;
+                                        isOpened = false;
+                                    } else {
+                                        openedFor = info.uid;
+                                        isOpened = true;
+                                        infoW.open(map, marker);
+                                    }
+                                } else {
+                                    openedFor = info.uid;
+                                    isOpened = true;
+                                    infoW.open(map, marker);
+                                }
+
+                                // give it time to find the elements as it opens.
+                                setTimeout(() => {
+                                    if (info.available == false) {
+                                        $("#tooltip_rent").text("NOT AVAIL.");
+                                    }
+
+                                    $("#tooltip_name").text(info.name);
+                                    $("#tooltip_email").text(info.email);
+                                    $("#tooltip_phone").text(info.phone);
+                                    $("#tooltip_size").text(info.size);
+                                    $("#tooltip_address").text(info.address);
+                                    $("#tooltip_pfp").attr("src", u);
+
+                                    if (!connectedOnce) {
+                                        connectedOnce = true;
+                                        $("#tooltip_rent").click(() => {
+                                            if (firebase.auth().currentUser) {
+                                                if (info.available != false) {
+                                                    console.log("handle the rent..");
+                                                } else {
+                                                    alert("This is not available for rent! Contact the owner for questions.");
+                                                }
+                                            } else {
+                                                alert("Please login to Storem before attempting to rent anything.");
+                                            }
+                                        });
+                                    }
+                                }, 500);
+                            });
+                        });
                     }
-
-                    $("#tooltip_name").text(info.name);
-                    $("#tooltip_email").text(info.email);
-                    $("#tooltip_phone").text(info.phone);
-                    $("#tooltip_size").text(info.size);
-                    $("#tooltip_address").text(info.address);
-                    $("#tooltip_pfp").attr("src", u);
-
-                    if (!connectedOnce) {
-                      connectedOnce = true;
-                      $("#tooltip_rent").click(() => {
-                        if (firebase.auth().currentUser) {
-                          if (info.available != false) {
-                            console.log("handle the rent..");
-                          } else {
-                            alert("This is not available for rent! Contact the owner for questions.");
-                          }
-                        } else {
-                          alert("Please login to Storem before attempting to rent anything.");
-                        }
-                      });
-                    }
-                  }, 500);
                 });
             });
-          }
-      });
-  });
-}
-</script>
-  <script src="assets/js/main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
+        }
+    </script>
+    <script src="assets/js/main1.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCELpzMAiytdH3mON0Sq9NImFblgK1U_Rs&callback=initMap" async defer></script>
 </body>
+
 </html>
