@@ -28,11 +28,13 @@ firebase.auth().onAuthStateChanged((user) => {
         $("#pemail").attr("value", user.email);
         $("#newProfile").show();
       } else {
+        var userData = shot.val();
+
         $("#displayName").val(user.displayName);
-        firebase.storage().ref().child(newUser.profile).getDownloadURL().then((u) => {
+        firebase.storage().ref().child(userData.profile).getDownloadURL().then((u) => {
           $("#display").attr("src", u);
         });
-        $("#role").val(newUser.role == 0 ? "Hosts" : "Renter");
+        $("#role").val(userData.role == 0 ? "Host" : "Renter");
 
         var query = database.ref("users");
         query.once("value").then((snapshot) => {
@@ -70,7 +72,7 @@ $("#login").click(() => {
 });
 
 $("#logout").click(() => {
-  firebase.auth().signOut().then(() => { console.log("Signed out."); });
+  firebase.auth().signOut().then(() => { alert("Signed out."); });
 })
 
 $("#picSel").change(() => {
