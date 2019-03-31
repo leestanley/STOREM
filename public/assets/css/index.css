@@ -1,0 +1,121 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#map {
+    height: 100%;
+}
+
+.logo{
+    height: 20rem;
+    position: absolute;
+    width: 70%;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.left-bar{
+    background-color: #00adb5;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.right-bar{
+    background-color: #00adb5;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.content{
+    height: 100vh;
+    background-color: #00adb5;
+}
+
+.btns-container{
+    text-align: center !important;
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.sigin-btn{
+    width: 20rem;
+    height: 3rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    outline: transparent;
+    border-style: none;
+}
+
+.btn-lines{
+    height: 2px;
+    position: relative;
+    background-color: aquamarine;
+}
+
+.top-line{
+    bottom: 1rem;
+    width: 80%;
+}
+
+.bottom-line{
+    top: 3.9rem;
+    width: 80%;
+    left: 3.8rem;
+}
+
+.left-line{
+    height: 50px;
+    width: 2px;
+    bottom: 0.7rem;
+    position: absolute;
+}
+
+.right-line{
+    height: 50px;
+    width: 2px;
+    position: absolute;
+    right: 5.8rem;
+    top: 1rem;
+}
+
+.noacc{
+    color: white !important;
+    position: relative;
+    top: 1.5rem;
+}
+
+.background {
+    background: linear-gradient(18deg, #00adb5, #393e46, #222831);
+    background-size: 600% 600%;
+    
+    -webkit-animation: login-gradient 30s ease infinite;
+    -moz-animation: login-gradient 30s ease infinite;
+    animation: login-gradient 30s ease infinite;
+}
+
+@-webkit-keyframes login-gradient {
+    0%{background-position:20% 0%}
+    50%{background-position:81% 100%}
+    100%{background-position:20% 0%}
+}
+@-moz-keyframes login-gradient {
+    0%{background-position:20% 0%}
+    50%{background-position:81% 100%}
+    100%{background-position:20% 0%}
+}
+@keyframes login-gradient { 
+    0%{background-position:20% 0%}
+    50%{background-position:81% 100%}
+    100%{background-position:20% 0%}
+}
