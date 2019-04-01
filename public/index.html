@@ -340,12 +340,19 @@
                                         connectedOnce = true;
                                         $("#tooltip_rent").click(() => {
                                             if (firebase.auth().currentUser) {
-                                                if (info.available != false) {
-                                                    console.log("handle the rent..");
-                                                    alert("Rented " + info.name + "'s house! [DEMO]");
-                                                } else {
-                                                    alert("This is not available for rent! Contact the owner for questions.");
-                                                }
+                                                database.ref("/users/" + firebase.auth().currentUser.uid).once("value").then((shot) => {
+                                                    var item = shot.val();
+                                                    if (item && item.role == 1) {
+                                                        if (info.available != false) {
+                                                            console.log("handle the rent..");
+                                                            alert("Rented " + info.name + "'s house! [DEMO]");
+                                                        } else {
+                                                            alert("This is not available for rent! Contact the owner for questions.");
+                                                        }
+                                                    } else {
+                                                        alert("You have to be a renter to rent.");
+                                                    }
+                                                });
                                             } else {
                                                 alert("Please login to Storem before attempting to rent anything.");
                                             }

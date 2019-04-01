@@ -88,16 +88,23 @@ function openListing() {
 			var user = new User(info.name, info.email, info.address, info.long, info.lat, info.phone, info.uid, info.profile, info.role, info.size, info.available);
 			if (user.role == 0) {
         firebase.storage().ref().child(user.profilePath).getDownloadURL().then((u) => {
-          var item = '<tr><td><img src="' + u + '" width="64" height="64" align="left" class="ml-2"> ' + user.name + '</td><td>' + user.address + '</td><td>' + user.email + ' (' + user.phone + ')</td><td>' + (user.available == false ? "NO (" : "YES (") + user.size + ')</td><td><input type="button" id="rent_' + user.uid + '" value="Rent"' + (user.available == false ? "disabled" : "") + '></td></tr>';
+          var item = '<tr><td><img src="' + u + '" width="64" height="64" align="left" class="mx-2"> ' + user.name + '</td><td>' + user.address + '</td><td>' + user.email + ' (' + user.phone + ')</td><td>' + (user.available == false ? "NO (" : "YES (") + user.size + ')</td><td><input type="button" id="rent_' + user.uid + '" value="Rent"' + (user.available == false ? "disabled" : "") + '></td></tr>';
           $("#houseListings").append(item);
           $("#rent_" + user.uid).click(() => {
             if (firebase.auth().currentUser) {
-              if (user.available != false) {
-                console.log("handle the rent..");
-                alert("Rented " + user.name + "'s house! [DEMO]");
-              } else {
-                alert("This is not available for rent! Contact the owner for questions.");
-              }
+							database.ref("/users/" + firebase.auth().currentUser.uid).once("value").then((shot) => {
+								var item = shot.val();
+								if (item  && item.role == 1) {
+									if (user.available != false) {
+										console.log("handle the rent..");
+										alert("Rented " + user.name + "'s house! [DEMO]");
+									} else {
+										alert("This is not available for rent! Contact the owner for questions.");
+									}
+								} else {
+									alert("You have to be a renter to rent.");
+								}
+							});
             } else {
               alert("Please login to Storem before attempting to rent anything.");
             }
