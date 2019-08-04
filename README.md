@@ -1,3 +1,8 @@
+<div align='center'>
+  <img height="150px" width="150px" src="https://i.imgur.com/x1zCTNx.png">
+</div>
+
+
 ## Inspiration
 In December 2017, the Skirball Fire came dangerously close to UCLA. Subsequently, the Woolsey Fire, LA's largest wildfire, started in July 2018 and burned over 96,949 acres of land. The damages to property cost over $1.6 billion. Loss of property due to wildfires not only causes financial losses but also hurts people emotionally. Research says that wildfires in California are set to grow in size and devastation due to changing ecological conditions. Presently, evacuees face challenges like a lack of local contacts and difficulties in locating affordable warehouse space, which prevent them from being able to move their personal effects out to safety. 
 
